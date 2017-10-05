@@ -1,0 +1,27 @@
+<td class ='spaced' rowspan='3'>
+</td>
+<td>
+  <table>
+    <tr class='list_title'>
+      <dl>
+      <dt><%= blogpost.creator %></dt>
+      <dd><%= blogpost.date_posted %></dd>
+      </dl>
+    </tr>
+    <tr class ='list_blog'>
+       <dl>
+       <dt><%= blogpost.title %></dt>
+       <dd><%=truncate blogpost.blog, length: 500 %></dd>
+       </dl>
+    </tr>
+    <tr class ='list_actions'>
+      <%= link_to 'Show', blogpost %><br/>
+      <%= link_to 'Edit', edit_blogpost_path(blogpost) %><br/>
+      <%= link_to 'Destroy', blogpost, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </tr>
+  </table>
+</td>
+<td>
+  <%= image_tag(blogpost.image_url, class: 'list_image') %>
+</td>
+

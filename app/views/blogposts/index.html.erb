@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Blogposts</h1>
+
+<table>
+
+  <tbody>
+    <% @blogposts.each do |blogpost| %>
+      
+      <%= content_tag :tr, class: cycle('list_line_odd', 'list_line_even') do %>
+          <td class='lcol'>
+          </td>
+          <td>
+          <table>
+          <tr class ='list_title'>
+            <td>
+            <dl>          
+            <dt><%= blogpost.title %></dt>
+            </dl>
+            </td>
+            <td>
+            <dl><%= blogpost.date_posted %></dl>
+            </td>
+            
+          </tr>
+          <tr class ='list_blog'>
+            <td>
+            <dl>
+            <dt><%= blogpost.creator %></dt>
+            <dd><%=truncate blogpost.blog, length: 500 %></dd>
+            </dl>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            <dl><%= image_tag(blogpost.image_url, class: 'list_image') %></dl>
+            </td>
+          </tr>
+          <tr class ='list_actions'>
+            <td>
+            <%= link_to 'Show', blogpost %><br/>
+            <%= link_to 'Edit', edit_blogpost_path(blogpost) %><br/>
+            <%= link_to 'Destroy', blogpost, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+          </table>
+          </td>
+      
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Blogpost', new_blogpost_path %>
