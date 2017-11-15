@@ -4,12 +4,12 @@ one:
   title: MyString
   image_url: MyString
   blog: MyText
-  date_posted: 2017-09-27 17:25:01
+  date_posted: <%= DateTime.now + Rational('0.02') %>
   creator: MyString
 
 two:
   title: MyString
   image_url: MyString
   blog: MyText
-  date_posted: 2017-09-27 17:25:01
+  date_posted: <%= DateTime.now + Rational('0.04') %>
   creator: MyString

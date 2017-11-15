@@ -8,8 +8,20 @@
 </head>
 
 <%= content_tag :body, class: controller.controller_name do %>
-  <%= yield %>
+<div id="columns">
+  <div id="side">
+    <ul>
+	<li><a href="http://www....">Home</a></li>
+	<li><a href="http://www..../faq">Questions</a></li>
+	<li><a href="http://www..../news">News</a></li>
+	<li><a href="http://www..../contact">Contact</a></li>
+        <%= Time.now %>
+    </ul>
+  </div>
+  <div id="main">
+    <%= yield %>
+  </div>
+</div>
 <% end %>
-
 
 </html>

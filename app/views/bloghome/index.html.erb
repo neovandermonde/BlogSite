@@ -1,0 +1,20 @@
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>Blog</h1>
+
+<% @blogposts.each do |blogpost| %>
+  <div class="entry">
+    <h2><%= blogpost.title %></h2>
+    <h4>by <%= blogpost.creator %></h4>
+    <!--<%= image_tag(blogpost.image_url) %>-->
+    <%= sanitize blogpost.blog %>
+    <div class="date_posted_line">
+      <div class = "date_posted">
+      <%= blogpost.date_posted %>
+      </div>
+    </div>
+
+  </div>
+<% end %>

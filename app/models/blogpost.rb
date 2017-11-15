@@ -1,11 +1,12 @@
 class TimeValidator < ActiveModel::Validator
   def validate(record)
     @d = DateTime.now
-    #@dn = DateTime.new(@d.year, @d.month, @d.day, @d.hour @d.min + "5",@d.sec)
+    @dn = @d + Rational('0.05')
     if record.date_posted < @d
       record.errors[:base] << "Time must be after current time"
-    #else if record.date_posted > @dn
-      #record.errors[:base] << "Time must be within 5 minutes after current time"
+    else if record.date_posted > @dn
+      record.errors[:base] << "Time must be within 1 hours of current time"
+      end
     end
   end
 end
