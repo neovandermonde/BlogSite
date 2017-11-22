@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 <center>
 <p>
   <big>
@@ -19,18 +19,35 @@
 </p>
 
 <p>
-  <%= image_tag(@blogpost.image_url) %>
+  <%= image_tag(@blogpost.image_url, height: "350", width: "400") %>
 </p>
 
 <p>
   <%= @blogpost.blog %>
 </p>
 
+<h2>Comments</h2>
+<% @blogpost.comments.each do |comment| %>
+  <p>
+  <table>
+  <tbody>
+    <tr class='comment_background'>
+    <td class='comment'>
+    <dl><dt><%= comment.content %></dl></dt>
+    by <%= comment.user %> at <%= comment.created_at %>
+    </td>
+    </tr>
+  </tbody>
+  </table>
+  </p>
+<% end %>
 
 
+<h2>Add a comment:</h2>
+<%= render "comments/form" %>
 
 
 <%= link_to 'Edit', edit_blogpost_path(@blogpost) %> |
-<%= link_to 'Back', blogposts_path %>
+<%= link_to 'Back', bloghome_path %>
 
 </center

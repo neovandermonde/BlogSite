@@ -24,11 +24,19 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    if session[:user_id]
+      user = User.find_by(id: params[session[:user_id]])
+    end
+    @blogpost = Blogpost.find(params[:blogpost_id])
+    if user
+      @comment = @blogpost.comments.create(params[:content].merge(user: user))
+    else
+      @comment = @blogpost.comments.create(comment_params)
+    end
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to blogpost_path(@blogpost), notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -69,6 +77,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:content, :blogpost_id)
+      params.require(:comment).permit(:content, :blogpost_id, :user_id, :sock)
     end
 end

@@ -12,8 +12,10 @@
     <%= sanitize blogpost.blog %>
     <div class="date_posted_line">
       <div class = "date_posted">
-      <%= blogpost.date_posted %>
-      </div>
+        <%= blogpost.date_posted %>
+      </div> <br/>
+      <%= blogpost.comments.count %> 
+      <%= link_to 'Comments', blogpost %>
     </div>
 
   </div>

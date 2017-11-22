@@ -1,0 +1,10 @@
+<h2>Recent Comments</h2>
+<table>
+  <% @comments.each do |comment| %>
+  <p>
+    <%= comment.content %><br/>
+    <%= comment.created_at %>
+  </p>
+  <% end %>
+
+</table>

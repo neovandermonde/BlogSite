@@ -21,4 +21,6 @@ class Blogpost < ActiveRecord::Base
     with: %r{\.(gif|jpg|png|jpeg)\Z}i,
     message: 'must be a URL for GIF, JPG, JPEG or PNG image.'
   }
+  
+  has_many :comments
 end

@@ -5,6 +5,7 @@
 .blogposts {
   table {
     border-collapse: collapse;
+    border: 1px solid red;
   }
 
   table tr td {
@@ -14,6 +15,10 @@
 
   .lcol {
     width:40px;
+  }
+
+  .comment {
+    width: 180px;
   }
 
   .list_image {
@@ -83,6 +88,10 @@
 
   .list_line_odd {
     background:   #dbc7f5;
+  }
+
+  .comment_background {
+    background:   #D3D3D3;
   }
 }
 
